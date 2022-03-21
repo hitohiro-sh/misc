@@ -17,9 +17,15 @@ const child2 = child_proccess.spawn('go', ['run', 'child_proc.go'], {
 });
 
 stdin.on('data', (data) => {
+    
     console.log(data);
-    child.stdin.write(data);
-    child2.stdin.write(data);
+
+    let buf = JSON.stringify({ attr: data })
+    child.stdin.write(buf);
+    // console.log(buf)
+    child2.stdin.write(`${buf}\n`);
+
+
 });
 
 stdin.on('end', () => {
