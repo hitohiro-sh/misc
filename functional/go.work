@@ -1,3 +1,6 @@
 go 1.18
 
-use ./work
+use (
+    ./work
+    ./work2
+)
